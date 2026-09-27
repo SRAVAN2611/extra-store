@@ -1,0 +1,54 @@
+1
+# Lambda function definition
+is_even = lambda n: (n & 1) == 0
+
+# User Input
+n = int(input())
+print(is_even(n))
+
+
+2a
+# Lambda function: calculates (a^b) and takes the remainder when divided by 10
+get_units_digit = lambda a, b: pow(a, b, 10)
+
+# User Input
+base = int(input("Enter base (a): "))
+exponent = int(input("Enter exponent (b): "))
+
+# Output
+print(get_units_digit(base, exponent))
+b
+# Shortest version using eval to find the last digit of a^b
+print(pow(*eval(input("Enter base, exponent (e.g., 5,3): ")), 10))
+
+3a
+num = int(input("Enter a number: "))
+
+# Extract unique digits, ignoring zero to avoid a ZeroDivisionError
+unique_digits = {int(d) for d in str(num) if d != '0'}
+
+# Count how many digits divide the original number perfectly
+count = sum(1 for d in unique_digits if num % d == 0)
+
+print(f"Count of perfect divisors: {count}")
+b
+n = int(input("Number: "))
+print(sum(n % d == 0 for d in {int(d) for d in str(n)} if d))
+
+
+4
+import math
+
+num = int(input("Enter a large number: "))
+divisors = []
+
+# Loop only up to the square root of the number
+for i in range(1, int(math.isqrt(num)) + 1):
+    if num % i == 0:
+        divisors.append(i)          # Small factor
+        if i != num // i:           # Avoid duplicates for perfect squares (like 4*4=16)
+            divisors.append(num // i) # Large matching factor
+
+divisors.sort()
+print(f"Optimized Divisors of {num}: {divisors}")
+
